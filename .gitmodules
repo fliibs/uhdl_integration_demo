@@ -1,0 +1,3 @@
+[submodule "uhdl_demo/submodules/uhdl"]
+	path = uhdl_demo/submodules/uhdl
+	url = https://github.com/YuunqiLiu/uhdl.git
