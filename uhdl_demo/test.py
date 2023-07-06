@@ -16,11 +16,10 @@ class TEST(Component):
         self.u_slv.rst_n += self.rst_n
 
         Assign(self.u_mst.clk, self.clk)
-
-        SmartAssign(self.rst_n, self.u_mst.rst_n)
+        Assign(self.u_mst.rst_n, self.rst_n)
 
         SmartAssign(self.u_mst.get_io('m_'), self.u_slv.get_io('s_'))
-        self.expose_io(self.u_slv.get_io('s0_'))
+        self.expose_io(self.u_slv.get_io('top_'))
 
 
 if __name__=="__main__":
