@@ -11,70 +11,28 @@
 //==========================================================================================================================
 
 
-//[UHDL]Key Start [md5:eb87ae88d8a16976e25febcb89e905ff]
+//[UHDL]Key Start [md5:00e22752f544173991148be2120c25f9]
 //Version Control Hash: 3accddf64b1dd03abeb9b0b3e5a7ba44
-//Content Hash: 35eed76eb9fbd16a61a9528ffda5e828
+//Content Hash: f3ff13a275f3e06a13f9463bc050a6c7
 //Parameter Hash: d41d8cd98f00b204e9800998ecf8427e
-//[UHDL]Key End [md5:eb87ae88d8a16976e25febcb89e905ff]
+//[UHDL]Key End [md5:00e22752f544173991148be2120c25f9]
 
 //[UHDL]Version Control Start [md5:3accddf64b1dd03abeb9b0b3e5a7ba44]
 //[UHDL]Version Control Version:1.0.1
 //[UHDL]Version Control End [md5:3accddf64b1dd03abeb9b0b3e5a7ba44]
 
-//[UHDL]Tool Message Start [md5:81315fb8ff8ec910fbc4d5b6bba46eec]
-//Written by UHDL in 2023-07-06 00:46:53
-//[UHDL]Tool Message End [md5:81315fb8ff8ec910fbc4d5b6bba46eec]
+//[UHDL]Tool Message Start [md5:a485daef2371c34e52d4f8d0de8ba414]
+//Written by UHDL in 2023-07-06 01:05:40
+//[UHDL]Tool Message End [md5:a485daef2371c34e52d4f8d0de8ba414]
 
 //[UHDL]User Message Start [md5:d41d8cd98f00b204e9800998ecf8427e]
 
 //[UHDL]User Message End [md5:d41d8cd98f00b204e9800998ecf8427e]
 
-//[UHDL]Content Start [md5:35eed76eb9fbd16a61a9528ffda5e828]
+//[UHDL]Content Start [md5:f3ff13a275f3e06a13f9463bc050a6c7]
 module axi_master_DATA_WIDTH_32_ADDR_WIDTH_16_ID_WIDTH_7_USER_WIDTH_7 (
-	output [6:0]  D_u_slv_m_axi_awid   ,
-	output [15:0] D_u_slv_m_axi_awaddr ,
-	output [7:0]  D_u_slv_m_axi_awlen  ,
-	output [2:0]  D_u_slv_m_axi_awsize ,
-	output [1:0]  D_u_slv_m_axi_awburst,
-	output        D_u_slv_m_axi_awlock ,
-	output [3:0]  D_u_slv_m_axi_awcache,
-	output [2:0]  D_u_slv_m_axi_awprot ,
-	output [3:0]  D_u_slv_m_axi_awqos  ,
-	output [6:0]  D_u_slv_m_axi_awuser ,
-	output        D_u_slv_m_axi_awvalid,
-	input         D_u_slv_m_axi_awready,
-	output [31:0] D_u_slv_m_axi_wdata  ,
-	output [3:0]  D_u_slv_m_axi_wstrb  ,
-	output        D_u_slv_m_axi_wlast  ,
-	output [6:0]  D_u_slv_m_axi_wuser  ,
-	output        D_u_slv_m_axi_wvalid ,
-	input         D_u_slv_m_axi_wready ,
-	input  [6:0]  D_u_slv_m_axi_bid    ,
-	input  [1:0]  D_u_slv_m_axi_bresp  ,
-	input  [6:0]  D_u_slv_m_axi_buser  ,
-	input         D_u_slv_m_axi_bvalid ,
-	output        D_u_slv_m_axi_bready ,
-	output [6:0]  D_u_slv_m_axi_arid   ,
-	output [15:0] D_u_slv_m_axi_araddr ,
-	output [7:0]  D_u_slv_m_axi_arlen  ,
-	output [2:0]  D_u_slv_m_axi_arsize ,
-	output [1:0]  D_u_slv_m_axi_arburst,
-	output        D_u_slv_m_axi_arlock ,
-	output [3:0]  D_u_slv_m_axi_arcache,
-	output [2:0]  D_u_slv_m_axi_arprot ,
-	output [3:0]  D_u_slv_m_axi_arqos  ,
-	output [6:0]  D_u_slv_m_axi_aruser ,
-	output        D_u_slv_m_axi_arvalid,
-	input         D_u_slv_m_axi_arready,
-	input  [6:0]  D_u_slv_m_axi_rid    ,
-	input  [31:0] D_u_slv_m_axi_rdata  ,
-	input  [1:0]  D_u_slv_m_axi_rresp  ,
-	input         D_u_slv_m_axi_rlast  ,
-	input  [6:0]  D_u_slv_m_axi_ruser  ,
-	input         D_u_slv_m_axi_rvalid ,
-	output        D_u_slv_m_axi_rready ,
-	input         D_u_slv_clk          ,
-	input         D_u_slv_rst_n        );
+	input  D_u_slv_clk  ,
+	input  D_u_slv_rst_n);
 	wire        u_slv_clk          ;
 	wire        u_slv_rst_n        ;
 	wire [6:0]  u_slv_m_axi_awid   ;
@@ -119,93 +77,9 @@ module axi_master_DATA_WIDTH_32_ADDR_WIDTH_16_ID_WIDTH_7_USER_WIDTH_7 (
 	wire [6:0]  u_slv_m_axi_ruser  ;
 	wire        u_slv_m_axi_rvalid ;
 	wire        u_slv_m_axi_rready ;
-	assign D_u_slv_m_axi_awid = u_slv_m_axi_awid;
-	
-	assign D_u_slv_m_axi_awaddr = u_slv_m_axi_awaddr;
-	
-	assign D_u_slv_m_axi_awlen = u_slv_m_axi_awlen;
-	
-	assign D_u_slv_m_axi_awsize = u_slv_m_axi_awsize;
-	
-	assign D_u_slv_m_axi_awburst = u_slv_m_axi_awburst;
-	
-	assign D_u_slv_m_axi_awlock = u_slv_m_axi_awlock;
-	
-	assign D_u_slv_m_axi_awcache = u_slv_m_axi_awcache;
-	
-	assign D_u_slv_m_axi_awprot = u_slv_m_axi_awprot;
-	
-	assign D_u_slv_m_axi_awqos = u_slv_m_axi_awqos;
-	
-	assign D_u_slv_m_axi_awuser = u_slv_m_axi_awuser;
-	
-	assign D_u_slv_m_axi_awvalid = u_slv_m_axi_awvalid;
-	
-	assign D_u_slv_m_axi_wdata = u_slv_m_axi_wdata;
-	
-	assign D_u_slv_m_axi_wstrb = u_slv_m_axi_wstrb;
-	
-	assign D_u_slv_m_axi_wlast = u_slv_m_axi_wlast;
-	
-	assign D_u_slv_m_axi_wuser = u_slv_m_axi_wuser;
-	
-	assign D_u_slv_m_axi_wvalid = u_slv_m_axi_wvalid;
-	
-	assign D_u_slv_m_axi_bready = u_slv_m_axi_bready;
-	
-	assign D_u_slv_m_axi_arid = u_slv_m_axi_arid;
-	
-	assign D_u_slv_m_axi_araddr = u_slv_m_axi_araddr;
-	
-	assign D_u_slv_m_axi_arlen = u_slv_m_axi_arlen;
-	
-	assign D_u_slv_m_axi_arsize = u_slv_m_axi_arsize;
-	
-	assign D_u_slv_m_axi_arburst = u_slv_m_axi_arburst;
-	
-	assign D_u_slv_m_axi_arlock = u_slv_m_axi_arlock;
-	
-	assign D_u_slv_m_axi_arcache = u_slv_m_axi_arcache;
-	
-	assign D_u_slv_m_axi_arprot = u_slv_m_axi_arprot;
-	
-	assign D_u_slv_m_axi_arqos = u_slv_m_axi_arqos;
-	
-	assign D_u_slv_m_axi_aruser = u_slv_m_axi_aruser;
-	
-	assign D_u_slv_m_axi_arvalid = u_slv_m_axi_arvalid;
-	
-	assign D_u_slv_m_axi_rready = u_slv_m_axi_rready;
-	
 	assign u_slv_clk = D_u_slv_clk;
 	
 	assign u_slv_rst_n = D_u_slv_rst_n;
-	
-	assign u_slv_m_axi_awready = D_u_slv_m_axi_awready;
-	
-	assign u_slv_m_axi_wready = D_u_slv_m_axi_wready;
-	
-	assign u_slv_m_axi_bid = D_u_slv_m_axi_bid;
-	
-	assign u_slv_m_axi_bresp = D_u_slv_m_axi_bresp;
-	
-	assign u_slv_m_axi_buser = D_u_slv_m_axi_buser;
-	
-	assign u_slv_m_axi_bvalid = D_u_slv_m_axi_bvalid;
-	
-	assign u_slv_m_axi_arready = D_u_slv_m_axi_arready;
-	
-	assign u_slv_m_axi_rid = D_u_slv_m_axi_rid;
-	
-	assign u_slv_m_axi_rdata = D_u_slv_m_axi_rdata;
-	
-	assign u_slv_m_axi_rresp = D_u_slv_m_axi_rresp;
-	
-	assign u_slv_m_axi_rlast = D_u_slv_m_axi_rlast;
-	
-	assign u_slv_m_axi_ruser = D_u_slv_m_axi_ruser;
-	
-	assign u_slv_m_axi_rvalid = D_u_slv_m_axi_rvalid;
 	
 	axi_master #(
 		.DATA_WIDTH(32),
@@ -259,7 +133,7 @@ module axi_master_DATA_WIDTH_32_ADDR_WIDTH_16_ID_WIDTH_7_USER_WIDTH_7 (
 		.m_axi_rready(u_slv_m_axi_rready));
 
 endmodule
-//[UHDL]Content End [md5:35eed76eb9fbd16a61a9528ffda5e828]
+//[UHDL]Content End [md5:f3ff13a275f3e06a13f9463bc050a6c7]
 
 //[UHDL]Parameter Start [md5:d41d8cd98f00b204e9800998ecf8427e]
 
