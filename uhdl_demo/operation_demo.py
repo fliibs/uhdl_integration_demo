@@ -1,4 +1,4 @@
-from submodules.uhdl import *
+from uhdl.uhdl import *
 
 
 class operation_demo(Component):
