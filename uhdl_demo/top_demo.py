@@ -58,10 +58,19 @@ class top_demo(Component):
         top_list = self.u_slv.get_io('top_')
 
         # remove io which name contains arid or awid from mst_list and slv_list
-        self.exclude_io(mst_list, ['arid','awid'])
-        self.exclude_io(slv_list, ['arid','awid'])
-        self.exclude_io(top_list, ['awready'])
+        for (item_m, item_s) in zip(mst_list, slv_list):
+            if re.search(r'arid|awid', item_m.name):
+                mst_list.remove(item_m)
+            
+            if re.search(r'arid|awid', item_s.name):
+                slv_list.remove(item_s)
 
+        for io in top_list:
+            if re.search(r'awready', io.name):
+                top_list.remove(io)
+
+        
+        
         # combinational logic operation in top module
         self.top_demo_signal += And(self.u_mst.m_axi_awvalid, Equal(self.u_mst.m_axi_awid, UInt(self.u_mst.m_axi_awid.width, 1)))
         self.top_axi_awready += Or(self.u_slv.top_axi_awready, self.top_demo_signal)
