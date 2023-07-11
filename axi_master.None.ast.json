@@ -1,0 +1,1159 @@
+{
+  "name": "$root",
+  "kind": "Root",
+  "addr": 6362658584000,
+  "members": [
+    {
+      "name": "",
+      "kind": "CompilationUnit",
+      "addr": 6362661030808
+    },
+    {
+      "name": "axi_master",
+      "kind": "Instance",
+      "addr": 6362661316584,
+      "body": {
+        "name": "axi_master",
+        "kind": "InstanceBody",
+        "addr": 6362661307368,
+        "members": [
+          {
+            "name": "DATA_WIDTH",
+            "kind": "Parameter",
+            "addr": 6362661307544,
+            "type": "logic signed[31:0]",
+            "initializer": {
+              "kind": "Conversion",
+              "type": "logic signed[31:0]",
+              "operand": {
+                "kind": "IntegerLiteral",
+                "type": "int",
+                "value": "32",
+                "constant": "32"
+              },
+              "constant": "32"
+            },
+            "value": "32",
+            "isLocal": false,
+            "isPort": true,
+            "isBody": false
+          },
+          {
+            "name": "AWADDR_WIDTH",
+            "kind": "Parameter",
+            "addr": 6362661307912,
+            "type": "logic signed[31:0]",
+            "initializer": {
+              "kind": "Conversion",
+              "type": "logic signed[31:0]",
+              "operand": {
+                "kind": "IntegerLiteral",
+                "type": "int",
+                "value": "32",
+                "constant": "32"
+              },
+              "constant": "32"
+            },
+            "value": "32",
+            "isLocal": false,
+            "isPort": true,
+            "isBody": false
+          },
+          {
+            "name": "ARADDR_WIDTH",
+            "kind": "Parameter",
+            "addr": 6362661308280,
+            "type": "logic signed[31:0]",
+            "initializer": {
+              "kind": "Conversion",
+              "type": "logic signed[31:0]",
+              "operand": {
+                "kind": "IntegerLiteral",
+                "type": "int",
+                "value": "32",
+                "constant": "32"
+              },
+              "constant": "32"
+            },
+            "value": "32",
+            "isLocal": false,
+            "isPort": true,
+            "isBody": false
+          },
+          {
+            "name": "AWID_WIDTH",
+            "kind": "Parameter",
+            "addr": 6362661308648,
+            "type": "logic signed[31:0]",
+            "initializer": {
+              "kind": "Conversion",
+              "type": "logic signed[31:0]",
+              "operand": {
+                "kind": "IntegerLiteral",
+                "type": "int",
+                "value": "7",
+                "constant": "7"
+              },
+              "constant": "7"
+            },
+            "value": "7",
+            "isLocal": false,
+            "isPort": true,
+            "isBody": false
+          },
+          {
+            "name": "BID_WIDTH",
+            "kind": "Parameter",
+            "addr": 6362661309016,
+            "type": "logic signed[31:0]",
+            "initializer": {
+              "kind": "Conversion",
+              "type": "logic signed[31:0]",
+              "operand": {
+                "kind": "IntegerLiteral",
+                "type": "int",
+                "value": "7",
+                "constant": "7"
+              },
+              "constant": "7"
+            },
+            "value": "7",
+            "isLocal": false,
+            "isPort": true,
+            "isBody": false
+          },
+          {
+            "name": "ARID_WIDTH",
+            "kind": "Parameter",
+            "addr": 6362661309384,
+            "type": "logic signed[31:0]",
+            "initializer": {
+              "kind": "Conversion",
+              "type": "logic signed[31:0]",
+              "operand": {
+                "kind": "IntegerLiteral",
+                "type": "int",
+                "value": "7",
+                "constant": "7"
+              },
+              "constant": "7"
+            },
+            "value": "7",
+            "isLocal": false,
+            "isPort": true,
+            "isBody": false
+          },
+          {
+            "name": "RID_WIDTH",
+            "kind": "Parameter",
+            "addr": 6362661309752,
+            "type": "logic signed[31:0]",
+            "initializer": {
+              "kind": "Conversion",
+              "type": "logic signed[31:0]",
+              "operand": {
+                "kind": "IntegerLiteral",
+                "type": "int",
+                "value": "7",
+                "constant": "7"
+              },
+              "constant": "7"
+            },
+            "value": "7",
+            "isLocal": false,
+            "isPort": true,
+            "isBody": false
+          },
+          {
+            "name": "AWUSER_WIDTH",
+            "kind": "Parameter",
+            "addr": 6362661314576,
+            "type": "logic signed[31:0]",
+            "initializer": {
+              "kind": "Conversion",
+              "type": "logic signed[31:0]",
+              "operand": {
+                "kind": "IntegerLiteral",
+                "type": "int",
+                "value": "5",
+                "constant": "5"
+              },
+              "constant": "5"
+            },
+            "value": "5",
+            "isLocal": false,
+            "isPort": true,
+            "isBody": false
+          },
+          {
+            "name": "WUSER_WIDTH",
+            "kind": "Parameter",
+            "addr": 6362661314944,
+            "type": "logic signed[31:0]",
+            "initializer": {
+              "kind": "Conversion",
+              "type": "logic signed[31:0]",
+              "operand": {
+                "kind": "IntegerLiteral",
+                "type": "int",
+                "value": "5",
+                "constant": "5"
+              },
+              "constant": "5"
+            },
+            "value": "5",
+            "isLocal": false,
+            "isPort": true,
+            "isBody": false
+          },
+          {
+            "name": "BUSER_WIDTH",
+            "kind": "Parameter",
+            "addr": 6362661315312,
+            "type": "logic signed[31:0]",
+            "initializer": {
+              "kind": "Conversion",
+              "type": "logic signed[31:0]",
+              "operand": {
+                "kind": "IntegerLiteral",
+                "type": "int",
+                "value": "5",
+                "constant": "5"
+              },
+              "constant": "5"
+            },
+            "value": "5",
+            "isLocal": false,
+            "isPort": true,
+            "isBody": false
+          },
+          {
+            "name": "ARUSER_WIDTH",
+            "kind": "Parameter",
+            "addr": 6362661315680,
+            "type": "logic signed[31:0]",
+            "initializer": {
+              "kind": "Conversion",
+              "type": "logic signed[31:0]",
+              "operand": {
+                "kind": "IntegerLiteral",
+                "type": "int",
+                "value": "5",
+                "constant": "5"
+              },
+              "constant": "5"
+            },
+            "value": "5",
+            "isLocal": false,
+            "isPort": true,
+            "isBody": false
+          },
+          {
+            "name": "RUSER_WIDTH",
+            "kind": "Parameter",
+            "addr": 6362661316048,
+            "type": "logic signed[31:0]",
+            "initializer": {
+              "kind": "Conversion",
+              "type": "logic signed[31:0]",
+              "operand": {
+                "kind": "IntegerLiteral",
+                "type": "int",
+                "value": "5",
+                "constant": "5"
+              },
+              "constant": "5"
+            },
+            "value": "5",
+            "isLocal": false,
+            "isPort": true,
+            "isBody": false
+          },
+          {
+            "name": "clk",
+            "kind": "Port",
+            "addr": 6362661316704,
+            "type": "logic",
+            "direction": "In",
+            "internalSymbol": "6362661316832 clk"
+          },
+          {
+            "name": "clk",
+            "kind": "Net",
+            "addr": 6362661316832,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "rst_n",
+            "kind": "Port",
+            "addr": 6362661317200,
+            "type": "logic",
+            "direction": "In",
+            "internalSymbol": "6362661317328 rst_n"
+          },
+          {
+            "name": "rst_n",
+            "kind": "Net",
+            "addr": 6362661317328,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_awid",
+            "kind": "Port",
+            "addr": 6362661317696,
+            "type": "logic[6:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661317824 m_axi_awid"
+          },
+          {
+            "name": "m_axi_awid",
+            "kind": "Net",
+            "addr": 6362661317824,
+            "type": "logic[6:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_awaddr",
+            "kind": "Port",
+            "addr": 6362661318192,
+            "type": "logic[31:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661310480 m_axi_awaddr"
+          },
+          {
+            "name": "m_axi_awaddr",
+            "kind": "Net",
+            "addr": 6362661310480,
+            "type": "logic[31:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_awlen",
+            "kind": "Port",
+            "addr": 6362661310848,
+            "type": "logic[7:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661310976 m_axi_awlen"
+          },
+          {
+            "name": "m_axi_awlen",
+            "kind": "Net",
+            "addr": 6362661310976,
+            "type": "logic[7:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_awsize",
+            "kind": "Port",
+            "addr": 6362661311344,
+            "type": "logic[2:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661311472 m_axi_awsize"
+          },
+          {
+            "name": "m_axi_awsize",
+            "kind": "Net",
+            "addr": 6362661311472,
+            "type": "logic[2:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_awburst",
+            "kind": "Port",
+            "addr": 6362661311840,
+            "type": "logic[1:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661311968 m_axi_awburst"
+          },
+          {
+            "name": "m_axi_awburst",
+            "kind": "Net",
+            "addr": 6362661311968,
+            "type": "logic[1:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_awlock",
+            "kind": "Port",
+            "addr": 6362661312336,
+            "type": "logic",
+            "direction": "Out",
+            "internalSymbol": "6362661312464 m_axi_awlock"
+          },
+          {
+            "name": "m_axi_awlock",
+            "kind": "Net",
+            "addr": 6362661312464,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_awcache",
+            "kind": "Port",
+            "addr": 6362661312832,
+            "type": "logic[3:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661312960 m_axi_awcache"
+          },
+          {
+            "name": "m_axi_awcache",
+            "kind": "Net",
+            "addr": 6362661312960,
+            "type": "logic[3:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_awprot",
+            "kind": "Port",
+            "addr": 6362661313328,
+            "type": "logic[2:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661313456 m_axi_awprot"
+          },
+          {
+            "name": "m_axi_awprot",
+            "kind": "Net",
+            "addr": 6362661313456,
+            "type": "logic[2:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_awqos",
+            "kind": "Port",
+            "addr": 6362661313824,
+            "type": "logic[3:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661313952 m_axi_awqos"
+          },
+          {
+            "name": "m_axi_awqos",
+            "kind": "Net",
+            "addr": 6362661313952,
+            "type": "logic[3:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_awuser",
+            "kind": "Port",
+            "addr": 6362661314320,
+            "type": "logic[4:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661302288 m_axi_awuser"
+          },
+          {
+            "name": "m_axi_awuser",
+            "kind": "Net",
+            "addr": 6362661302288,
+            "type": "logic[4:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_awvalid",
+            "kind": "Port",
+            "addr": 6362661302656,
+            "type": "logic",
+            "direction": "Out",
+            "internalSymbol": "6362661302784 m_axi_awvalid"
+          },
+          {
+            "name": "m_axi_awvalid",
+            "kind": "Net",
+            "addr": 6362661302784,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_awready",
+            "kind": "Port",
+            "addr": 6362661303152,
+            "type": "logic",
+            "direction": "In",
+            "internalSymbol": "6362661303280 m_axi_awready"
+          },
+          {
+            "name": "m_axi_awready",
+            "kind": "Net",
+            "addr": 6362661303280,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_wdata",
+            "kind": "Port",
+            "addr": 6362661303648,
+            "type": "logic[31:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661303776 m_axi_wdata"
+          },
+          {
+            "name": "m_axi_wdata",
+            "kind": "Net",
+            "addr": 6362661303776,
+            "type": "logic[31:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_wstrb",
+            "kind": "Port",
+            "addr": 6362661304144,
+            "type": "logic[3:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661304272 m_axi_wstrb"
+          },
+          {
+            "name": "m_axi_wstrb",
+            "kind": "Net",
+            "addr": 6362661304272,
+            "type": "logic[3:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_wlast",
+            "kind": "Port",
+            "addr": 6362661304640,
+            "type": "logic",
+            "direction": "Out",
+            "internalSymbol": "6362661304768 m_axi_wlast"
+          },
+          {
+            "name": "m_axi_wlast",
+            "kind": "Net",
+            "addr": 6362661304768,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_wuser",
+            "kind": "Port",
+            "addr": 6362661305136,
+            "type": "logic[4:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661305264 m_axi_wuser"
+          },
+          {
+            "name": "m_axi_wuser",
+            "kind": "Net",
+            "addr": 6362661305264,
+            "type": "logic[4:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_wvalid",
+            "kind": "Port",
+            "addr": 6362661305632,
+            "type": "logic",
+            "direction": "Out",
+            "internalSymbol": "6362661305760 m_axi_wvalid"
+          },
+          {
+            "name": "m_axi_wvalid",
+            "kind": "Net",
+            "addr": 6362661305760,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_wready",
+            "kind": "Port",
+            "addr": 6362661306128,
+            "type": "logic",
+            "direction": "In",
+            "internalSymbol": "6362661294096 m_axi_wready"
+          },
+          {
+            "name": "m_axi_wready",
+            "kind": "Net",
+            "addr": 6362661294096,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_bid",
+            "kind": "Port",
+            "addr": 6362661294464,
+            "type": "logic[6:0]",
+            "direction": "In",
+            "internalSymbol": "6362661294592 m_axi_bid"
+          },
+          {
+            "name": "m_axi_bid",
+            "kind": "Net",
+            "addr": 6362661294592,
+            "type": "logic[6:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_bresp",
+            "kind": "Port",
+            "addr": 6362661294960,
+            "type": "logic[1:0]",
+            "direction": "In",
+            "internalSymbol": "6362661295088 m_axi_bresp"
+          },
+          {
+            "name": "m_axi_bresp",
+            "kind": "Net",
+            "addr": 6362661295088,
+            "type": "logic[1:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_buser",
+            "kind": "Port",
+            "addr": 6362661295456,
+            "type": "logic[4:0]",
+            "direction": "In",
+            "internalSymbol": "6362661295584 m_axi_buser"
+          },
+          {
+            "name": "m_axi_buser",
+            "kind": "Net",
+            "addr": 6362661295584,
+            "type": "logic[4:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_bvalid",
+            "kind": "Port",
+            "addr": 6362661295952,
+            "type": "logic",
+            "direction": "In",
+            "internalSymbol": "6362661296080 m_axi_bvalid"
+          },
+          {
+            "name": "m_axi_bvalid",
+            "kind": "Net",
+            "addr": 6362661296080,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_bready",
+            "kind": "Port",
+            "addr": 6362661296448,
+            "type": "logic",
+            "direction": "Out",
+            "internalSymbol": "6362661296576 m_axi_bready"
+          },
+          {
+            "name": "m_axi_bready",
+            "kind": "Net",
+            "addr": 6362661296576,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_arid",
+            "kind": "Port",
+            "addr": 6362661296944,
+            "type": "logic[6:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661297072 m_axi_arid"
+          },
+          {
+            "name": "m_axi_arid",
+            "kind": "Net",
+            "addr": 6362661297072,
+            "type": "logic[6:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_araddr",
+            "kind": "Port",
+            "addr": 6362661297440,
+            "type": "logic[31:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661297568 m_axi_araddr"
+          },
+          {
+            "name": "m_axi_araddr",
+            "kind": "Net",
+            "addr": 6362661297568,
+            "type": "logic[31:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_arlen",
+            "kind": "Port",
+            "addr": 6362661297936,
+            "type": "logic[7:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661285904 m_axi_arlen"
+          },
+          {
+            "name": "m_axi_arlen",
+            "kind": "Net",
+            "addr": 6362661285904,
+            "type": "logic[7:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_arsize",
+            "kind": "Port",
+            "addr": 6362661286272,
+            "type": "logic[2:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661286400 m_axi_arsize"
+          },
+          {
+            "name": "m_axi_arsize",
+            "kind": "Net",
+            "addr": 6362661286400,
+            "type": "logic[2:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_arburst",
+            "kind": "Port",
+            "addr": 6362661286768,
+            "type": "logic[1:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661286896 m_axi_arburst"
+          },
+          {
+            "name": "m_axi_arburst",
+            "kind": "Net",
+            "addr": 6362661286896,
+            "type": "logic[1:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_arlock",
+            "kind": "Port",
+            "addr": 6362661287264,
+            "type": "logic",
+            "direction": "Out",
+            "internalSymbol": "6362661287392 m_axi_arlock"
+          },
+          {
+            "name": "m_axi_arlock",
+            "kind": "Net",
+            "addr": 6362661287392,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_arcache",
+            "kind": "Port",
+            "addr": 6362661287760,
+            "type": "logic[3:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661287888 m_axi_arcache"
+          },
+          {
+            "name": "m_axi_arcache",
+            "kind": "Net",
+            "addr": 6362661287888,
+            "type": "logic[3:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_arprot",
+            "kind": "Port",
+            "addr": 6362661288256,
+            "type": "logic[2:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661288384 m_axi_arprot"
+          },
+          {
+            "name": "m_axi_arprot",
+            "kind": "Net",
+            "addr": 6362661288384,
+            "type": "logic[2:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_arqos",
+            "kind": "Port",
+            "addr": 6362661288752,
+            "type": "logic[3:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661288880 m_axi_arqos"
+          },
+          {
+            "name": "m_axi_arqos",
+            "kind": "Net",
+            "addr": 6362661288880,
+            "type": "logic[3:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_aruser",
+            "kind": "Port",
+            "addr": 6362661289248,
+            "type": "logic[4:0]",
+            "direction": "Out",
+            "internalSymbol": "6362661289376 m_axi_aruser"
+          },
+          {
+            "name": "m_axi_aruser",
+            "kind": "Net",
+            "addr": 6362661289376,
+            "type": "logic[4:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_arvalid",
+            "kind": "Port",
+            "addr": 6362661289744,
+            "type": "logic",
+            "direction": "Out",
+            "internalSymbol": "6362661273616 m_axi_arvalid"
+          },
+          {
+            "name": "m_axi_arvalid",
+            "kind": "Net",
+            "addr": 6362661273616,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_arready",
+            "kind": "Port",
+            "addr": 6362661273984,
+            "type": "logic",
+            "direction": "In",
+            "internalSymbol": "6362661274112 m_axi_arready"
+          },
+          {
+            "name": "m_axi_arready",
+            "kind": "Net",
+            "addr": 6362661274112,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_rid",
+            "kind": "Port",
+            "addr": 6362661274480,
+            "type": "logic[6:0]",
+            "direction": "In",
+            "internalSymbol": "6362661274608 m_axi_rid"
+          },
+          {
+            "name": "m_axi_rid",
+            "kind": "Net",
+            "addr": 6362661274608,
+            "type": "logic[6:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_rdata",
+            "kind": "Port",
+            "addr": 6362661274976,
+            "type": "logic[31:0]",
+            "direction": "In",
+            "internalSymbol": "6362661275104 m_axi_rdata"
+          },
+          {
+            "name": "m_axi_rdata",
+            "kind": "Net",
+            "addr": 6362661275104,
+            "type": "logic[31:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_rresp",
+            "kind": "Port",
+            "addr": 6362661275472,
+            "type": "logic[1:0]",
+            "direction": "In",
+            "internalSymbol": "6362661275600 m_axi_rresp"
+          },
+          {
+            "name": "m_axi_rresp",
+            "kind": "Net",
+            "addr": 6362661275600,
+            "type": "logic[1:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_rlast",
+            "kind": "Port",
+            "addr": 6362661275968,
+            "type": "logic",
+            "direction": "In",
+            "internalSymbol": "6362661276096 m_axi_rlast"
+          },
+          {
+            "name": "m_axi_rlast",
+            "kind": "Net",
+            "addr": 6362661276096,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_ruser",
+            "kind": "Port",
+            "addr": 6362661276464,
+            "type": "logic[4:0]",
+            "direction": "In",
+            "internalSymbol": "6362661276592 m_axi_ruser"
+          },
+          {
+            "name": "m_axi_ruser",
+            "kind": "Net",
+            "addr": 6362661276592,
+            "type": "logic[4:0]",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_rvalid",
+            "kind": "Port",
+            "addr": 6362661276960,
+            "type": "logic",
+            "direction": "In",
+            "internalSymbol": "6362661277088 m_axi_rvalid"
+          },
+          {
+            "name": "m_axi_rvalid",
+            "kind": "Net",
+            "addr": 6362661277088,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          },
+          {
+            "name": "m_axi_rready",
+            "kind": "Port",
+            "addr": 6362661277456,
+            "type": "logic",
+            "direction": "Out",
+            "internalSymbol": "6362661265424 m_axi_rready"
+          },
+          {
+            "name": "m_axi_rready",
+            "kind": "Net",
+            "addr": 6362661265424,
+            "type": "logic",
+            "netType": {
+              "name": "wire",
+              "kind": "NetType",
+              "addr": 6362658582080,
+              "type": "logic"
+            }
+          }
+        ],
+        "definition": "axi_master"
+      },
+      "connections": [
+      ]
+    }
+  ]
+}

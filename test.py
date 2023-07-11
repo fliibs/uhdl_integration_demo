@@ -7,9 +7,9 @@ class test(Component):
         super().__init__()
         add_scope(globals=globals(), locals=locals())
 
-        exec_file('/workspaces/uhdl_integration_demo/multi_file_cooperation/sub_file1.py')
-        exec_file('/workspaces/uhdl_integration_demo/multi_file_cooperation/sub_file2.py')
-        exec_file('/workspaces/uhdl_integration_demo/multi_file_cooperation/sub_file3.py')
+        exec_file('sub_file1.py')
+        exec_file('sub_file2.py')
+        exec_file('sub_file3.py')
 
 
 class demo(Component):

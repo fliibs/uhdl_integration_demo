@@ -1,4 +1,3 @@
-
-[submodule "uhdl_demo/uhdl"]
-	path = uhdl_demo/uhdl
-	url = https://github.com/YuunqiLiu/uhdl.git
+[submodule "uhdl"]
+	path = uhdl
+	url = git@github.com:YuunqiLiu/uhdl.git
