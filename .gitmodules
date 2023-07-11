@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 [submodule "uhdl_demo/uhdl"]
 	path = uhdl_demo/uhdl
@@ -5,3 +6,8 @@
 [submodule "multi_file_cooperation/uhdl"]
 	path = multi_file_cooperation/uhdl
 	url = https://github.com/YuunqiLiu/uhdl.git
+=======
+[submodule "uhdl"]
+	path = uhdl
+	url = git@github.com:YuunqiLiu/uhdl.git
+>>>>>>> refs/remotes/origin/main
