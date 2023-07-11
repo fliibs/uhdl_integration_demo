@@ -14,6 +14,7 @@ module axi_slave #(
 )(		
 		input                   clk,
         input                   rst_n,
+
 		input    [AWADDR_WIDTH-1 : 0]                top_axi_awaddr,
 		input    [2 : 0]                             top_axi_awprot,
 		input                                        top_axi_awvalid,
