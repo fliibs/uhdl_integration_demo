@@ -2,3 +2,6 @@
 [submodule "uhdl_demo/uhdl"]
 	path = uhdl_demo/uhdl
 	url = https://github.com/YuunqiLiu/uhdl.git
+[submodule "multi_file_cooperation/uhdl"]
+	path = multi_file_cooperation/uhdl
+	url = https://github.com/YuunqiLiu/uhdl.git

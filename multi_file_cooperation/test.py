@@ -7,52 +7,34 @@ class test(Component):
         super().__init__()
         add_scope(globals=globals(), locals=locals())
 
-        exec_file('/workspaces/uhdl_integration_demo/multi_file_cooperation/sub_file1.py')
-        exec_file('/workspaces/uhdl_integration_demo/multi_file_cooperation/sub_file2.py')
-        exec_file('/workspaces/uhdl_integration_demo/multi_file_cooperation/sub_file3.py')
+        exec_file('sub_file1.py')
+        exec_file('sub_file2.py')
+        exec_file('sub_file3.py')
 
 
-class demo(Component):
-    def __init__(self):
-        super().__init__()
-        self.clk = Input(UInt(1))
-        self.rst_n = Input(UInt(1))
-        
-        self.u_slv = VComponent(top='axi_slave' ,file='/workspaces/uhdl_integration_demo/uhdl_demo/rtl_repo/axi_slave.v',   DATA_WIDTH=32, \
-                                                                                                                            AWADDR_WIDTH=32, \
-                                                                                                                            ARADDR_WIDTH=32, \
-                                                                                                                            AWID_WIDTH=7, \
-                                                                                                                            BID_WIDTH=7, \
-                                                                                                                            ARID_WIDTH=7, \
-                                                                                                                            RID_WIDTH=7, \
-                                                                                                                            AWUSER_WIDTH=5, \
-                                                                                                                            WUSER_WIDTH=5, \
-                                                                                                                            BUSER_WIDTH=5, \
-                                                                                                                            ARUSER_WIDTH=5, \
-                                                                                                                            RUSER_WIDTH=5 )
-        self.u_mst = VComponent(top='axi_master' ,file='/workspaces/uhdl_integration_demo/uhdl_demo/rtl_repo/axi_master.v', DATA_WIDTH=32, \
-                                                                                                                            AWADDR_WIDTH=34, \
-                                                                                                                            ARADDR_WIDTH=30, \
-                                                                                                                            AWID_WIDTH=7, \
-                                                                                                                            BID_WIDTH=7, \
-                                                                                                                            ARID_WIDTH=7, \
-                                                                                                                            RID_WIDTH=7, \
-                                                                                                                            AWUSER_WIDTH=5, \
-                                                                                                                            WUSER_WIDTH=5, \
-                                                                                                                            BUSER_WIDTH=5, \
-                                                                                                                            ARUSER_WIDTH=5, \
-                                                                                                                            RUSER_WIDTH=5 )
+ # Override parent class function to modify io name of top
+    def expose_io(self, io_list):
+        for io in io_list:
+            sub_inst = io._father
+            if self != sub_inst._father:
+                raise Exception()
+            new_io_name = 'HEAD_%s_%s' % (sub_inst.name, io.name)
+            new_io = self.set(new_io_name, io.template())
 
-        self.u_slv.clk   += self.clk
-        self.u_slv.rst_n += self.rst_n
+            if isinstance(new_io, Input):
+                io += new_io
+            elif isinstance(new_io, Output):
+                new_io += io
+            elif isinstance(new_io, Inout):
+                new_io += io
+            else:
+                raise Exception()
 
-        Assign(self.u_mst.clk, self.clk)
-        Assign(self.u_mst.rst_n, self.rst_n)
-
-
-        SmartAssign(self.u_mst.get_io('m_'), self.u_slv.get_io('s_'))
-
-        self.expose_io(self.u_slv.get_io('top_'))
+    def exclude_io(self, io_list, exclude_list):
+        pattern = '|'.join(exclude_list)
+        for io in io_list:
+            if re.search(pattern, io.name):
+                io_list.remove(io)
 
     
 if __name__=="__main__":

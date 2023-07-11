@@ -5,7 +5,7 @@ class wrap_demo(Component):
     def __init__(self, DATA_WIDTH):
         super().__init__()
 
-        self.u_slv = VComponent(top='axi_slave' ,file='/workspaces/uhdl_integration_demo/uhdl_demo/rtl_repo/axi_slave.v', \
+        self.u_slv = VComponent(top='axi_slave' ,file='rtl_repo/axi_slave.v', \
                                                  DATA_WIDTH=DATA_WIDTH)
 
         self.expose_io(self.u_slv.get_io('s_'))

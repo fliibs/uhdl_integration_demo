@@ -1,5 +1,6 @@
 import sys, os
 import traceback 
+import re
 from enum import Enum, unique
 
 
@@ -56,3 +57,10 @@ def exec_file(file_path, scope=None):
     
     raise InterpreterError("%s at line %d of %s: %s " % (error_class, line_number, file_name, detail))
 
+
+# other function
+def exclude_io(io_list, exclude_list):
+        pattern = '|'.join(exclude_list)
+        for io in io_list:
+            if re.search(pattern, io.name):
+                io_list.remove(io)

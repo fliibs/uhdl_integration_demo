@@ -14,32 +14,36 @@ class top_demo(Component):
         self.rst_n           = Input(UInt(1))
         self.top_demo_signal = Output(UInt(1))
         self.top_axi_awready = Output(UInt(1))
+        self.inout_demo_slv  = Inout(UInt(1))
+        self.inout_demo_mst  = Inout(UInt(1))
 
         # instantiated axi_slave and axi_master
-        self.u_slv = VComponent(top='axi_slave' ,file='/workspaces/uhdl_integration_demo/uhdl_demo/rtl_repo/axi_slave.v',   DATA_WIDTH=32, \
-                                                                                                                            AWADDR_WIDTH=32, \
-                                                                                                                            ARADDR_WIDTH=32, \
-                                                                                                                            AWID_WIDTH=7, \
-                                                                                                                            BID_WIDTH=7, \
-                                                                                                                            ARID_WIDTH=7, \
-                                                                                                                            RID_WIDTH=7, \
-                                                                                                                            AWUSER_WIDTH=5, \
-                                                                                                                            WUSER_WIDTH=5, \
-                                                                                                                            BUSER_WIDTH=5, \
-                                                                                                                            ARUSER_WIDTH=5, \
-                                                                                                                            RUSER_WIDTH=5 )
-        self.u_mst = VComponent(top='axi_master' ,file='/workspaces/uhdl_integration_demo/uhdl_demo/rtl_repo/axi_master.v', DATA_WIDTH=32, \
-                                                                                                                            AWADDR_WIDTH=32, \
-                                                                                                                            ARADDR_WIDTH=32, \
-                                                                                                                            AWID_WIDTH=4, \
-                                                                                                                            BID_WIDTH=7, \
-                                                                                                                            ARID_WIDTH=9, \
-                                                                                                                            RID_WIDTH=7, \
-                                                                                                                            AWUSER_WIDTH=5, \
-                                                                                                                            WUSER_WIDTH=5, \
-                                                                                                                            BUSER_WIDTH=5, \
-                                                                                                                            ARUSER_WIDTH=5, \
-                                                                                                                            RUSER_WIDTH=5 )
+        self.u_slv = VComponent(top='axi_slave' ,file='rtl_repo/axi_slave.v',   DATA_WIDTH=32, \
+                                                                                AWADDR_WIDTH=32, \
+                                                                                ARADDR_WIDTH=32, \
+                                                                                AWID_WIDTH=7, \
+                                                                                BID_WIDTH=7, \
+                                                                                ARID_WIDTH=7, \
+                                                                                RID_WIDTH=7, \
+                                                                                AWUSER_WIDTH=5, \
+                                                                                WUSER_WIDTH=5, \
+                                                                                BUSER_WIDTH=5, \
+                                                                                ARUSER_WIDTH=5, \
+                                                                                RUSER_WIDTH=5 )
+        self.u_mst = VComponent(top='axi_master' ,file='rtl_repo/axi_master.v', DATA_WIDTH=32, \
+                                                                                AWADDR_WIDTH=32, \
+                                                                                ARADDR_WIDTH=32, \
+                                                                                AWID_WIDTH=4, \
+                                                                                BID_WIDTH=7, \
+                                                                                ARID_WIDTH=9, \
+                                                                                RID_WIDTH=7, \
+                                                                                AWUSER_WIDTH=5, \
+                                                                                WUSER_WIDTH=5, \
+                                                                                BUSER_WIDTH=5, \
+                                                                                ARUSER_WIDTH=5, \
+                                                                                RUSER_WIDTH=5 )
+
+        self.u_demo_inout = VComponent(top='demo_inout',file='rtl_repo/demo_inout.v')
 
         # assign u_slv_clk = clk
         self.u_slv.clk   += self.clk
@@ -56,21 +60,15 @@ class top_demo(Component):
         mst_list = self.u_mst.get_io('m_')
         slv_list = self.u_slv.get_io('s_')
         top_list = self.u_slv.get_io('top_')
+        inout_list = self.u_demo_inout.io_list
+        print(inout_list)
 
         # remove io which name contains arid or awid from mst_list and slv_list
-        for (item_m, item_s) in zip(mst_list, slv_list):
-            if re.search(r'arid|awid', item_m.name):
-                mst_list.remove(item_m)
-            
-            if re.search(r'arid|awid', item_s.name):
-                slv_list.remove(item_s)
 
-        for io in top_list:
-            if re.search(r'awready', io.name):
-                top_list.remove(io)
+        self.exclude_io(mst_list, ['arid','awid'])
+        self.exclude_io(slv_list, ['arid','awid'])
+        self.exclude_io(top_list, ['awready'])
 
-        
-        
         # combinational logic operation in top module
         self.top_demo_signal += And(self.u_mst.m_axi_awvalid, Equal(self.u_mst.m_axi_awid, UInt(self.u_mst.m_axi_awid.width, 1)))
         self.top_axi_awready += Or(self.u_slv.top_axi_awready, self.top_demo_signal)
@@ -80,6 +78,7 @@ class top_demo(Component):
         
         # expose io to top
         self.expose_io(top_list)
+        # self.expose_io()
     
 
     # Override parent class function to modify io name of top
@@ -95,13 +94,20 @@ class top_demo(Component):
                 io += new_io
             elif isinstance(new_io, Output):
                 new_io += io
+            elif isinstance(new_io, Inout):
+                new_io += io
             else:
                 raise Exception()
 
+    def exclude_io(self, io_list, exclude_list):
+        pattern = '|'.join(exclude_list)
+        for io in io_list:
+            if re.search(pattern, io.name):
+                io_list.remove(io)
 
 
 if __name__=="__main__":
     u_test = top_demo()
     u_test.run_lint()
-    u_test.generate_filelist()
+    # u_test.generate_filelist()
     u_test.generate_verilog()
