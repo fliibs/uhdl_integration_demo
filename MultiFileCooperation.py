@@ -41,8 +41,8 @@ def exec_file(file_path, scope=None):
         detail = err.args[0]
         line_number = err.lineno
 
-        log_info = ("%s at line %d of %s: %s " % (error_class, line_number, file_name, detail))
-        generate_log(log_info)
+        # log_info = ("%s at line %d of %s: %s " % (error_class, line_number, file_name, detail))
+        # generate_log(log_info)
 
     except Exception as err:
         error_class = err.__class__.__name__
@@ -50,8 +50,11 @@ def exec_file(file_path, scope=None):
         cl, exc, tb = sys.exc_info()
         line_number = traceback.extract_tb(tb)[1][1]
 
-        log_info = ("%s\n\n%s at line %d of %s: %s" % (err, error_class, line_number, file_name, detail))
-        generate_log(log_info)
+        # log_info = ("%s\n\n%s at line %d of %s: %s" % (err, error_class, line_number, file_name, detail))
+        # generate_log(log_info)
+        print("--------------------------------------------------------------------------")
+        print("[ErrorDetail]: %s" %err)
+        print("--------------------------------------------------------------------------")
     else:
         return
     
@@ -60,7 +63,9 @@ def exec_file(file_path, scope=None):
 
 # other function
 def exclude_io(io_list, exclude_list):
-        pattern = '|'.join(exclude_list)
-        for io in io_list:
-            if re.search(pattern, io.name):
-                io_list.remove(io)
+    pattern = '|'.join(exclude_list)
+    io_list_new=[]
+    for io in io_list:
+        if not re.search(pattern, io.name):
+            io_list_new.append(io)
+    return io_list_new

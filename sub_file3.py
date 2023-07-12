@@ -9,9 +9,9 @@ top_list = self.u_slv.get_io('top_')
 
 # remove io which name contains arid or awid from mst_list and slv_list
 
-self.exclude_io(mst_list, ['arid','awid'])
-self.exclude_io(slv_list, ['arid','awid'])
-self.exclude_io(top_list, ['awready'])
+exclude_io(mst_list, ['arid','awid'])
+exclude_io(slv_list, ['arid','awid'])
+exclude_io(top_list, ['awready'])
 
 # combinational logic operation in top module
 self.top_demo_signal += And(self.u_mst.m_axi_awvalid, Equal(self.u_mst.m_axi_awid, UInt(self.u_mst.m_axi_awid.width, 1)))
