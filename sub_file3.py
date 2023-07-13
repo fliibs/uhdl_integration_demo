@@ -12,7 +12,7 @@ self.top_demo_signal += And(self.u_mst.m_axi_awvalid, Equal(self.u_mst.m_axi_awi
 self.top_axi_awready += Or(self.u_slv.top_axi_awready, self.top_demo_signal)
 
 # remove io which contains arid or awid from mst_list and slv_list connect remain io in list
-SmartAssign(exclude_io(mst_list, ['arid','awid']), exclude_io(slv_list, ['arid','awid']))
+SmartAssign(self.exclude_io(mst_list, ['arid','awid']), self.exclude_io(slv_list, ['arid','awid']))
 
 # expose io to top
-self.expose_io(exclude_io(top_list, ['awready']))
+self.expose_io(self.exclude_io(top_list, ['awready']))
