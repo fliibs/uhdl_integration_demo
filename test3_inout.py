@@ -1,5 +1,4 @@
-from uhdl.uhdl import *
-from MultiFileCooperation import exclude_io
+from uhdl import *
 
 class test_inout(Component):
     def __init__(self):
