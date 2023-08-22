@@ -1,13 +1,12 @@
 
 from uhdl.uhdl import *
-from MultiFileCooperation import *
 from PerfectAssign import *
 
 
 class sys_top(Component):
     def __init__(self):
         super().__init__()
-        add_scope(globals=globals(), locals=locals())
+        MultiFileScope(globals=globals(), locals=locals())
 
         self.clk = Input(UInt(1))
         self.rst_n = Input(UInt(1))
@@ -45,8 +44,8 @@ class sys_top(Component):
         single_assign(self.rst_n, self.u_slv.rst_n)
         single_assign(self.rst_n, self.u_mst.rst_n)
 
-        exec_file('sub1_slv.py')
-        exec_file('sub2_mst.py')
+        MultiFileExec('sub1_slv.py')
+        MultiFileExec('sub2_mst.py')
 
         
 
