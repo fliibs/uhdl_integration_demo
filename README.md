@@ -63,7 +63,7 @@ from MultiFileCooperation import *
 class sys_top(Component):
     def __init__(self):
         super().__init__()
-        add_scope(globals=globals(), locals=locals())
+        MultiFileScope(globals=globals(), locals=locals())
 ```
 
 ## 2. 实例化模块
@@ -201,6 +201,11 @@ expose_io(io_list, has_prefix=False)
 self.u_slv.get_io('m_')
 ```
 
-
+## 4. 多人协作
+如果需要将一个顶层文件拆成多个python文件进行操作，如```test5_top.py```所示，则需要调用```MultiFileExec```将子文件sub1_slv.py和sub2_mst.py导入top文件中执行：
+```python
+MultiFileExec('sub1_slv.py')
+MultiFileExec('sub2_mst.py')
+```
 
 
