@@ -49,7 +49,7 @@ class top_demo(Component):
         single_assign(Combine(UInt(self.u_slv.s_axi_awid.width-self.u_mst.m_axi_awid.width,0), self.u_mst.m_axi_awid), self.u_slv.s_axi_awid)
         single_assign(self.u_mst.m_axi_arid[self.u_slv.s_axi_arid.width-1:0], self.u_slv.s_axi_arid)
 
-        perfect_assign(self.u_mst, self.u_slv, axi_intf.io_list, axi_intf.ignore_list, src_prefix='m_', dst_prefix='s_')
+        perfect_assign(self.u_mst, self.u_slv, axi_intf.io_list, axi_intf.ignore_list, src_prefix='m_', dst_prefix='s_', src_suffix='', dst_suffix='')
 
         self.expose_io(self.u_slv.get_io('top_'))
     

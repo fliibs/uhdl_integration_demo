@@ -1,5 +1,6 @@
 from uhdl.uhdl import *
 import warnings
+import re
 
 class axi_intf():
     io_list = [
@@ -26,7 +27,7 @@ class axi_intf():
         'axi_buser',    
         'axi_bvalid',   
         'axi_bready',   
-        'axi_arid',         
+        'axi_arid',  
         'axi_araddr',   
         'axi_arlen',    
         'axi_arsize',   
@@ -44,7 +45,7 @@ class axi_intf():
         'axi_rlast',    
         'axi_ruser',    
         'axi_rvalid',   
-        'axi_rready'   
+        'axi_rready'  
         ]
 
     ignore_list = [
@@ -54,23 +55,30 @@ class axi_intf():
     def __init__(self) -> None:
         pass
 
+def match_io(io_list, pattern):
+    match_io_list=[]
+    for io in io_list:
+        if re.search(pattern, io.name):
+                match_io_list.append(io)
+    return match_io_list
 
 
-def perfect_assign(src, dst, io_list, ignore_list=[], src_prefix='', dst_prefix=''):
-    src_list = []
-    dst_list = []
-    for suffix in io_list:
-        if suffix not in ignore_list:
-            src_intf = src.get_io(src_prefix+suffix)
-            dst_intf = dst.get_io(dst_prefix+suffix)
+def perfect_assign(src, dst, io_list, ignore_list=[], src_prefix='', dst_prefix='', src_suffix='', dst_suffix=''):
+    for io in io_list:
+        if io not in ignore_list:
+            src_list = src.get_io('(?i)'+io)
+            dst_list = dst.get_io('(?i)'+io)
 
-            if src_intf == [] : warnings.warn('Interface \'%s\' Was Not Found'% (src_prefix+suffix));continue
-            elif dst_intf == [] : warnings.warn('Interface \'%s\' Was Not Found'% (dst_prefix+suffix));continue
+            src_pre_list = match_io(src_list, '^'+src_prefix)
+            dst_pre_list = match_io(dst_list, '^'+dst_prefix)
 
-            src_list.append(src_intf)
-            dst_list.append(dst_intf)
+            src_intf = match_io(src_pre_list, src_suffix+'$')
+            dst_intf = match_io(dst_pre_list, dst_suffix+'$')
 
-    SmartAssign(src_list, dst_list)
+            if src_intf == [] : warnings.warn('Interface \'%s\' Was Not Found'% (src_prefix+io+src_suffix));continue
+            elif dst_intf == [] : warnings.warn('Interface \'%s\' Was Not Found'% (dst_prefix+io+dst_suffix));continue
+
+            SmartAssign(src_intf, dst_intf)
 
 
 def single_assign(op1, op2):
@@ -111,7 +119,4 @@ def single_assign(op1, op2):
         
     else:
         raise Exception("Both op1 and op2 are Wire or One op is not Inout")
-
-
-
 
