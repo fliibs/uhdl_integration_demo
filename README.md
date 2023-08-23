@@ -119,8 +119,7 @@ perfect_assign(src, dst, io_list=[], ignore_list=[], src_prefix='', dst_prefix='
 ```io_list```和```ignore_list```准备：
 下面为包含axi aw和ar的io list，需要ignore的信号为axi_awid和axi_arid。
 ```python
-class axi_intf():
-    io_dict = [
+    axi_io_list = [
         'axi_awid',     
         'axi_awaddr',   
         'axi_awlen',    
@@ -147,17 +146,16 @@ class axi_intf():
         'axi_arready'  
         ]
 
-    ignore_list = [
+    axi_ignore_list = [
         'axi_awid',
         'axi_arid'
     ]
-    def __init__(self) -> None:
-        pass
+   
 ```
 
 demo中的例子：
 ```python
-perfect_assign(self.u_mst, self.u_slv, axi_intf.io_list, axi_intf.ignore_list, src_prefix='m_', dst_prefix='s_')
+perfect_assign(self.u_mst, self.u_slv, axi_io_list, axi_ignore_list, src_prefix='m_', dst_prefix='s_')
 ```
 
 
@@ -188,18 +186,33 @@ B = A[width-1:0]
 ### 3.3 将子模块的接口直接暴露到top层接口
 这里用```expose_io```进行接口的向上暴露
 ```python
-expose_io(io_list, has_prefix=False)
+self.expose_io(io_list, has_prefix=False)
 
 # io_list: 数据类型为list类型，为需要暴露到顶层的io列表
-# has_prefix：如果不需要加子模块的例化名前缀，需要设置为False
+# has_prefix：如果不需要加子模块的例化名前缀，需要设置为True，默认为False。
 ```
 
-这里一般会和```get_io```一同使用。```get_io(str)```会抓取模块中带有指定字符串的接口，并返回一个io_list。
+这里一般会和```get_io```和```exclude_io```一同使用。
+
+```get_io(str)```会抓取模块中带有指定字符串的接口，并返回一个io_list。
+
+```exclude_io(io_list, exclude_list)```输入为两个list，一个是get到的io_list，另外一个list包含一些字符串，这些字符串会去从io_list中匹配带有相同字符串的信号并去除掉，最后返回一个新的io_list。
 
 如果需要抓取self.u_slv中带有'm_'的接口。
 ```python
-self.u_slv.get_io('m_')
+slv_io_list = self.u_slv.get_io('m_')
 ```
+
+如果需要从上图io_list中去除带有id和addr的信号。
+```python
+slv_io_list_ex = self.exclude(slv_io_list, ['id', 'addr'])
+```
+
+将这一组新的io_list暴露到顶层。
+```python
+self.expose_io(slv_io_list_ex, has_prefix=True)
+```
+
 
 ## 4. 多人协作
 如果需要将一个顶层文件拆成多个python文件进行操作，如```test5_top.py```所示，则需要调用```MultiFileExec```将子文件sub1_slv.py和sub2_mst.py导入top文件中执行：
