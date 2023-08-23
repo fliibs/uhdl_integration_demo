@@ -126,7 +126,7 @@ single_assign(Signal_A, Signal_B)
 #### 3.2.2 批量信号perfect_assign
 多信号连接，对确定的一组信号，可以自动匹配方向并对每个信号一对一连接。
 ```python
-perfect_assign(src, dst, io_list=[], ignore_list=[], src_prefix='', dst_prefix='')
+perfect_assign(src, dst, io_list=[], ignore_list=[], src_prefix='', dst_prefix='', src_suffix='', dst_suffix='')
 # src：子模块1
 # dst：子模块2
 # io_list: 需要从子模块1和子模块2中抓出的信号（不需要信号的全称，比如说io_list中包含axi_awvalid,则会把子模块中带有'axi_awvalid'的信号抓出来进行连接）。
