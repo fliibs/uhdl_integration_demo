@@ -74,7 +74,9 @@ def perfect_assign(src, dst, io_list, ignore_list=[], src_prefix='', dst_prefix=
 
 
 def single_assign(op1, op2):
-    if isinstance(op1, (Input, Output)) and isinstance(op2, (Input, Output)):
+    if isinstance(op1, Inout) and isinstance(op2, Inout):
+        op1 += op2
+    elif isinstance(op1, (Input, Output)) and isinstance(op2, (Input, Output)):
         SmartAssign(op1, op2)
     
     elif isinstance(op1, (Input, Output)):
@@ -108,7 +110,7 @@ def single_assign(op1, op2):
             raise Exception("Hierachy Error, there is a bug")
         
     else:
-        raise Exception("Both op1 and op2 are Wire")
+        raise Exception("Both op1 and op2 are Wire or One op is not Inout")
 
 
 
