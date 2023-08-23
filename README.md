@@ -10,7 +10,7 @@ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 100
 ```
 
 ### 0.2 install and compile slang
-具体见 ![sv-lang](https://sv-lang.com/building.html)
+具体见 [sv-lang](https://sv-lang.com/building.html)
 ```shell
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt install gcc-11 g++-11
@@ -189,7 +189,7 @@ B = A[width-1:0]
 self.expose_io(io_list, has_prefix=False)
 
 # io_list: 数据类型为list类型，为需要暴露到顶层的io列表
-# has_prefix：如果不需要加子模块的例化名前缀，需要设置为True，默认为False。
+# has_prefix：如果不需要加子模块的例化名前缀，需要设置为False，默认为True。
 ```
 
 这里一般会和```get_io```和```exclude_io```一同使用。
@@ -210,7 +210,7 @@ slv_io_list_ex = self.exclude(slv_io_list, ['id', 'addr'])
 
 将这一组新的io_list暴露到顶层。
 ```python
-self.expose_io(slv_io_list_ex, has_prefix=True)
+self.expose_io(slv_io_list_ex, has_prefix=False)
 ```
 
 
