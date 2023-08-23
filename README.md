@@ -95,9 +95,27 @@ self.u_slv = VComponent(top='axi_slave' ,file='rtl_repo/axi_slave.v',   DATA_WID
                                                                                 RUSER_WIDTH=5 )
 ```
 
-## 3. IO连接及位操作
-### 3.1 IO连接
-#### 3.1.1 单信号single_assign
+## 3. IO生成、连接及位操作
+### 3.1 在顶层创建IO
+创建IO有三类：Input、Output、Inout，每类都需要指明位宽以及是否为有符号数。
+
+有符号数与无符号数：
+```python
+# UInt表示无符号数，bit为该无符号数的位宽，例如UInt(2)为2位无符号数。
+UInt(bit)
+# SInt表示有符号数，bit为该有符号数的位宽，例如SInt(5)为5位无符号数。
+SInt(bit)
+```
+
+创建三类IO
+```python
+self.input_port = Input(UInt(3))
+self.output_port = Output(UInt(3))
+self.inout_port = Inout(UInt(3))
+```
+
+### 3.2 IO连接
+#### 3.2.1 单信号single_assign
 单信号的连接，可以自动匹配两个信号方向进行连接。
 ```python
 single_assign(Signal_A, Signal_B)
@@ -105,7 +123,7 @@ single_assign(Signal_A, Signal_B)
 # 这里要求Signal_A和Signal_B的位宽相匹配
 ```
 
-#### 3.1.2 批量信号perfect_assign
+#### 3.2.2 批量信号perfect_assign
 多信号连接，对确定的一组信号，可以自动匹配方向并对每个信号一对一连接。
 ```python
 perfect_assign(src, dst, io_list=[], ignore_list=[], src_prefix='', dst_prefix='')
@@ -159,8 +177,8 @@ perfect_assign(self.u_mst, self.u_slv, axi_io_list, axi_ignore_list, src_prefix=
 ```
 
 
-### 3.2 位操作
-#### 3.2.1 补位操作（Combine）
+### 3.3 位操作
+#### 3.3.1 补位操作（Combine）
 通过```Combine```来将Signal_A和Signal_B进行拼接
 ```python
 Combine(Signal_A, Signal_B)
@@ -170,8 +188,12 @@ Combine(Signal_A, Signal_B)
 C = Combine(A, B)
 # 对应到rtl：assign C = {A，B};
 ```
+补充如果补0操作，```2'b```对应的是```UInt(2,0)```，需要写成：
+```python
+Combine(UInt(2,0), Signal_B)
+```
 
-#### 3.2.2 截位操作（[]）
+#### 3.3.2 截位操作（[]）
 通过截位符([])进行截位操作
 ```python
 Signal_B = Signal_A[B_Width-1:0]
@@ -183,7 +205,7 @@ B = A[width-1:0]
 # 对应到rtl：assign B = A[width-1:0];
 ```
 
-### 3.3 将子模块的接口直接暴露到top层接口
+### 3.4 将子模块的接口直接暴露到top层接口
 这里用```expose_io```进行接口的向上暴露
 ```python
 self.expose_io(io_list, has_prefix=False)
