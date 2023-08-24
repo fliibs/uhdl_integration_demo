@@ -25,6 +25,7 @@ cmake -DCMAKE_CXX_COMPILER=g++-11 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PRE
 make -j8
 
 ctest
+cd ..
 sudo make install
 
 # 添加环境变量 export PATH=$PATH:/usr/local/bin/bin
