@@ -1,13 +1,12 @@
 import sys
 from uhdl.uhdl import *
-import re
-# from MultiFileCooperation import exclude_io
 from PerfectAssign import *
 
 
 class top_demo(Component):
     def __init__(self):
         super().__init__()
+        MultiFileScope(globals=globals(), locals=locals())
 
         # define io of top
         # input clk
@@ -49,9 +48,17 @@ class top_demo(Component):
         single_assign(Combine(UInt(self.u_slv.s_axi_awid.width-self.u_mst.m_axi_awid.width,0), self.u_mst.m_axi_awid), self.u_slv.s_axi_awid)
         single_assign(self.u_mst.m_axi_arid[self.u_slv.s_axi_arid.width-1:0], self.u_slv.s_axi_arid)
 
+
+        output_list = []
+        output_list.append(self.u_mst.m_axi_arid)
+        output_list.append(self.u_mst.m_axi_awid)
+        unconnect_port(output_list, self)
+
+
         perfect_assign(self.u_mst, self.u_slv, axi_intf.io_list, axi_intf.ignore_list, src_prefix='m_', dst_prefix='s_', src_suffix='', dst_suffix='')
 
-        self.expose_io(self.u_slv.get_io('top_'))
+        # perfect_expose_io(self.u_slv.get_io('top_'), self)
+        perfect_expose_io(self.u_slv,self,['rvalid', 'ready'],prefix='top_')
     
 
 
