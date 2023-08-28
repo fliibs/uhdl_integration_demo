@@ -177,6 +177,25 @@ demo中的例子：
 perfect_assign(self.u_mst, self.u_slv, axi_io_list, axi_ignore_list, src_prefix='m_', dst_prefix='s_')
 ```
 
+#### 3.2.3 悬空信号unconnect_port
+如果信号默认悬空，需要调用unconnect_port信号，生成一个名为```*_unconnect (其中，*为需要悬空信号的名字)```
+
+```python
+unconnect_port(component, op1)
+
+# component：填self；
+# op1：为悬空的信号，支持单个信号或者io_list的形式；
+# 例如：
+
+# 单信号
+unconnect_port(self, self.u_mst.m_axi_arid)
+# 多信号
+output_list = []
+output_list.append(self.u_mst.m_axi_arid)
+output_list.append(self.u_mst.m_axi_awid)
+unconnect_port(self, output_list)
+```
+
 
 ### 3.3 位操作
 #### 3.3.1 补位操作（Combine）
@@ -207,6 +226,8 @@ B = A[width-1:0]
 ```
 
 ### 3.4 将子模块的接口直接暴露到top层接口
+
+#### 3.4.1 expose_io
 这里用```expose_io```进行接口的向上暴露
 ```python
 self.expose_io(io_list, has_prefix=False)
@@ -234,6 +255,28 @@ slv_io_list_ex = self.exclude(slv_io_list, ['id', 'addr'])
 将这一组新的io_list暴露到顶层。
 ```python
 self.expose_io(slv_io_list_ex, has_prefix=False)
+```
+
+### 3.4.2 perfect_expose_io
+perfect_expose_io是为了能够精确匹配子模块的接口并expose到顶层的方法，分为两种使用情况：
+
+```python
+# 像expose_io一样使用
+perfect_expose_io(component, object, has_prefix)
+# component：填self就好了；
+# object：填io_list，数据类型为list类型，为需要暴露到顶层的io列表；
+# has_prefix：同expose_io
+
+# 加入list进行精确匹配
+perfect_expose_io(component=None, object=None, io_list=[], prefix='',suffix='',has_prefix=True)
+# component：填self就好了；
+# object：这里需要填写例化好的子模块；
+# io_list: 需要从子模块1和子模块2中抓出的信号（不需要信号的全称，比如说io_list中包含axi_awvalid,则会把子模块中带有'axi_awvalid'的信号抓出来进行连接）;
+# has_prefix：同expose_io
+
+# 例如想要从self.u_slv抓出所有以top_为前缀，并且带有'rvalid'或'ready'的信号
+perfect_expose_io(self,self.u_slv,['rvalid', 'ready'],prefix='top_')
+
 ```
 
 
