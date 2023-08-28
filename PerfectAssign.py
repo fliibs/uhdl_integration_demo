@@ -122,16 +122,16 @@ def single_assign(op1, op2):
         raise Exception("Both op1 and op2 are Wire or One op is not Inout")
 
 
-def unconnect_port(op1, component):
+def unconnect_port(component, op1):
     if isinstance(op1, list):
         for io in op1:
-            unconnect_port(io, component)
+            unconnect_port(component, io)
     elif isinstance(op1, core.Variable.Variable):
         op2 = component.set(f'{op1.name}_unconnect', Wire(UInt(op1.width)))
         op2 += op1
 
 
-def perfect_expose_io(object, component=None, io_list=[], prefix='',suffix='',has_prefix=True):
+def perfect_expose_io(component=None, object=None, io_list=[], prefix='',suffix='',has_prefix=True):
     if io_list == []:
         component.expose_io(object, has_prefix)
     elif isinstance(object, Component):
@@ -141,6 +141,5 @@ def perfect_expose_io(object, component=None, io_list=[], prefix='',suffix='',ha
             expose_pre_list = match_io(expose_list, '^'+prefix)
             expose_intf = match_io(expose_pre_list, suffix+'$')
             component.expose_io(expose_intf, has_prefix)
-
     else:
         raise Exception("io_list exist, but object is not component.")

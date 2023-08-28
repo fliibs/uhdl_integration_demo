@@ -52,13 +52,11 @@ class top_demo(Component):
         output_list = []
         output_list.append(self.u_mst.m_axi_arid)
         output_list.append(self.u_mst.m_axi_awid)
-        unconnect_port(output_list, self)
+        unconnect_port(self, output_list)
 
 
         perfect_assign(self.u_mst, self.u_slv, axi_intf.io_list, axi_intf.ignore_list, src_prefix='m_', dst_prefix='s_', src_suffix='', dst_suffix='')
-
-        # perfect_expose_io(self.u_slv.get_io('top_'), self)
-        perfect_expose_io(self.u_slv,self,['rvalid', 'ready'],prefix='top_')
+        perfect_expose_io(self,self.u_slv,['rvalid', 'ready'],prefix='top_')
     
 
 

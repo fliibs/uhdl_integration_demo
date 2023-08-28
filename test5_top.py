@@ -9,10 +9,9 @@ class sys_top(Component):
         MultiFileScope(globals=globals(), locals=locals())
 
         
-        
+        MultiFileExec('sub3_inst.py')
         MultiFileExec('sub1_slv.py')
         MultiFileExec('sub2_mst.py')
-        MultiFileExec('sub3_inst.py')
 
         
 
