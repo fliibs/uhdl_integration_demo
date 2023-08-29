@@ -1,6 +1,5 @@
 import sys
 from uhdl.uhdl import *
-from PerfectAssign import *
 
 
 class top_demo(Component):
@@ -12,6 +11,7 @@ class top_demo(Component):
         # input clk
         self.clk             = Input(UInt(1))
         self.rst_n           = Input(UInt(1))
+        self.clk_o           = Output(UInt(1))
 
         # instantiated axi_slave and axi_master
         self.u_slv = VComponent(top='axi_slave' ,file='rtl_repo/axi_slave.v',   DATA_WIDTH=32, \
@@ -44,9 +44,10 @@ class top_demo(Component):
         single_assign(self.clk, self.u_mst.clk)
         single_assign(self.rst_n, self.u_slv.rst_n)
         single_assign(self.rst_n, self.u_mst.rst_n)
+        single_assign(self.clk_o, self.u_mst.m_axi_wvalid)
 
-        single_assign(Combine(UInt(self.u_slv.s_axi_awid.width-self.u_mst.m_axi_awid.width,0), self.u_mst.m_axi_awid), self.u_slv.s_axi_awid)
-        single_assign(self.u_mst.m_axi_arid[self.u_slv.s_axi_arid.width-1:0], self.u_slv.s_axi_arid)
+        # single_assign(Combine(UInt(self.u_slv.s_axi_awid.width-self.u_mst.m_axi_awid.width,0), self.u_mst.m_axi_awid), self.u_slv.s_axi_awid)
+        # single_assign(self.u_mst.m_axi_arid[self.u_slv.s_axi_arid.width-1:0], self.u_slv.s_axi_arid)
 
 
         output_list = []
@@ -56,9 +57,8 @@ class top_demo(Component):
 
 
         perfect_assign(self.u_mst, self.u_slv, axi_intf.io_list, axi_intf.ignore_list, src_prefix='m_', dst_prefix='s_', src_suffix='', dst_suffix='')
-        perfect_expose_io(self,self.u_slv,['rvalid', 'ready'],prefix='top_')
+        perfect_expose_io(self,self.u_slv.get_io('top_'))
     
-
 
 
 if __name__=="__main__":
