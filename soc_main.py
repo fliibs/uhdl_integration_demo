@@ -1,5 +1,5 @@
 from uhdl.uhdl import *
-from PerfectAssign import *
+# from PerfectAssign import *
 from Bus_def import *
 class sys_top(Component):
     def __init__(self):
@@ -10,6 +10,7 @@ class sys_top(Component):
         MultiFileExec('subsys1.py')
         MultiFileExec('subsys2.py')
         MultiFileExec('subsys3.py')
+        single_assign(self.u_subsys1.subsys2_to_subsys1_ming, self.u_subsys2.subsys2_to_subsys1_ming[3:0])
 
         
 if __name__=="__main__":

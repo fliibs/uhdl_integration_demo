@@ -18,11 +18,14 @@ single_assign(self.u_subsys1.subsys1_to_subsys2_ddd, Combine(self.word_cnt_wire,
 self.u_subsys2.subsys3orl_to_subsys2_ddd += UInt(11,0)
 single_assign(self.u_subsys1.subsys2_to_subsys1_ming, self.u_subsys2.subsys2_to_subsys1_ming[3:0])
 single_assign(self.u_subsys1.subsys2_to_subsys1_d, self.u_subsys2.subsys2_to_subsyslor2_d)
+single_assign(self.u_subsys1.subsys2_to_subsys1_d, self.u_subsys2.subsys2_to_subsyslor2_d)
 single_assign(self.u_subsys1.subsys1_tie_constant, UInt(7,0xd))
 unconnect_port(self, self.u_subsys1.subsys1_open) # output
 unconnect_port(self, self.u_subsys1.subsys1_pclk_d) # input
 perfect_assign(self.u_subsys1, self.u_subsys2, apb.io_list, ["pclk" , "pready"], src_prefix='subsys1_',  dst_prefix='subsys2_',src_suffix='_d', dst_suffix='_d')
 perfect_assign(self.u_subsys1, self.u_subsys3, apb.io_list, [], src_prefix='subsys13_',  dst_prefix='subsys3_',src_suffix='_d', dst_suffix='_d')
 
-self.word_cnt_wire += self.u_subsys2.word_count
+single_assign(self.word_cnt_wire,self.u_subsys2.word_count)
+single_assign(self.u_subsys2.word_count,self.word_cnt_wire)
+single_assign(self.word_cnt_wire,self.u_subsys2.word_count)
 

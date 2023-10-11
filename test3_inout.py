@@ -8,7 +8,7 @@ class test_inout(Component):
         self.u_demo_inout_1 = VComponent(top="demo_inout", file="rtl_repo/demo_inout.v")
         self.u_demo_inout_2 = VComponent(top="demo_inout", file="rtl_repo/demo_inout.v")
 
-        # self.u_demo_inout_0.data_io += self.u_demo_inout_1.data_io
+        self.u_demo_inout_0.data_io += self.u_demo_inout_1.data_io
         # self.u_demo_inout_1.data_tx += self.u_demo_inout_0.data_rx
 
         # lst_0 = self.u_demo_inout_0.io_list
