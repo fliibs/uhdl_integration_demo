@@ -128,7 +128,7 @@ def unconnect_port(component, op1):
             unconnect_port(component, io)
     elif isinstance(op1, core.Variable.Variable):
         op2 = component.set(f'{op1.name}_unconnect', Wire(UInt(op1.width)))
-        op2 += op1
+        single_assign(op1, op2)
 
 
 def perfect_expose_io(component=None, object=None, io_list=[], prefix='',suffix='',has_prefix=True):
